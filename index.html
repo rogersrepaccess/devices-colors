@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ga+Maamli&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Couleurs appareils</title>
+    <title>Devices colors</title>
     <style>
       
         @font-face {
@@ -182,7 +182,7 @@
         
       </div>
       <div class="banner-title" id="banner-title">
-        Couleurs appareils
+        Devices colors
       </div>
     </div>
     <div class="header">
@@ -191,7 +191,7 @@
             <button class="manufacturer-button" onclick="filterByManufacturer('Samsung')">Samsung</button>
             <button class="manufacturer-button" onclick="filterByManufacturer('Google')">Google</button>
         </div>
-        <button class="language-button" id="languageButton">English</button>
+        <button class="language-button" id="languageButton">Français</button>
     </div>
 
     <div class="carousels-grid" id="carousels"></div>
@@ -200,14 +200,14 @@
   
     <div class="footer">
       <a href="https://docs.google.com/spreadsheets/d/1Vom6fddm5iiDotBdRqu6iBh3FZCkjI2Pqb2X39xW0tQ/edit?usp=sharing" target="_blank">
-        <button class="edit-button" id="edit-button"><i class="fa-solid fa-pen-to-square"></i>  Ajouter / Modifier des modèles</button>
+        <button class="edit-button" id="edit-button"><i class="fa-solid fa-pen-to-square"></i>  Add / Edit models</button>
       </a>
     </div>
 
     <script>
         const jsonUrl = 'https://script.google.com/macros/s/AKfycbxZ0Ir6R6ovzoRvFX6xdPpadaP3IetE4iOTml2HWEiWrda36HZ7CwzCXuNbP6gPm_-ZNA/exec';
 
-        let currentLanguage = 'french';
+        let currentLanguage = 'english';
         let currentManufacturer = 'Apple';
         let data = {};
 
@@ -238,20 +238,20 @@
 
             const colorName = document.createElement('div');
             colorName.classList.add('color-name');
-            colorName.textContent = images[0][currentLanguage === 'english' ? 'colorEN' : 'colorFR'];
+            colorName.textContent = images[0][currentLanguage === 'french' ? 'colorFR' : 'colorEN'];
             container.appendChild(colorName);
 
             images.forEach((image, index) => {
                 const indicator = document.createElement('div');
                 indicator.classList.add('carousel-indicator');
                 indicator.style.backgroundColor = image.hexColor;
-                indicator.title = image[currentLanguage === 'english' ? 'colorEN' : 'colorFR'];
+                indicator.title = image[currentLanguage === 'french' ? 'colorFR' : 'colorEN'];
 
                 if (index === 0) indicator.classList.add('active');
 
                 indicator.addEventListener('click', () => {
                     imgElement.src = image.imageUrl;
-                    colorName.textContent = image[currentLanguage === 'english' ? 'colorEN' : 'colorFR'];
+                    colorName.textContent = image[currentLanguage === 'french' ? 'colorFR' : 'colorEN'];
                     document.querySelectorAll('.carousel-indicator').forEach(ind => ind.classList.remove('active'));
                     indicator.classList.add('active');
                 });
@@ -277,10 +277,10 @@
         }
 
         document.getElementById('languageButton').addEventListener('click', () => {
-            currentLanguage = currentLanguage === 'french' ? 'english' : 'french';
-            document.getElementById('languageButton').textContent = currentLanguage === 'french' ? 'English' : 'Français';
-            document.getElementById('edit-button').textContent = currentLanguage === 'french' ? 'Ajouter / Modifier des modèles' : 'Add / Edit models';
-            document.getElementById('banner-title').textContent = currentLanguage === 'french' ? 'Couleurs appareils' : 'Devices colors';
+            currentLanguage = currentLanguage === 'english' ? 'french' : 'english';
+            document.getElementById('languageButton').textContent = currentLanguage === 'english' ? 'Français' : 'English';
+            document.getElementById('edit-button').textContent = currentLanguage === 'english' ? 'Add / Edit models' : 'Ajouter / Modifier des modèles';
+            document.getElementById('banner-title').textContent = currentLanguage === 'english' ? 'Devices colors' : 'Couleurs appareils';
             filterByManufacturer(currentManufacturer);
         });
 
