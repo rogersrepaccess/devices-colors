@@ -24,7 +24,7 @@
             flex-direction: column;
             align-items: center;
             padding: 20px;
-            background-color: #f0f0f0;
+            background-color: #f4f4f9;
         }
         .banner {
             height: auto;
@@ -238,20 +238,20 @@
 
             const colorName = document.createElement('div');
             colorName.classList.add('color-name');
-            colorName.textContent = images[0][currentLanguage === 'french' ? 'colorFR' : 'colorEN'];
+            colorName.textContent = images[0][currentLanguage === 'english' ? 'colorEN' : 'colorFR'];
             container.appendChild(colorName);
 
             images.forEach((image, index) => {
                 const indicator = document.createElement('div');
                 indicator.classList.add('carousel-indicator');
                 indicator.style.backgroundColor = image.hexColor;
-                indicator.title = image[currentLanguage === 'french' ? 'colorFR' : 'colorEN'];
+                indicator.title = image[currentLanguage === 'english' ? 'colorEN' : 'colorFR'];
 
                 if (index === 0) indicator.classList.add('active');
 
                 indicator.addEventListener('click', () => {
                     imgElement.src = image.imageUrl;
-                    colorName.textContent = image[currentLanguage === 'french' ? 'colorFR' : 'colorEN'];
+                    colorName.textContent = image[currentLanguage === 'english' ? 'colorEN' : 'colorFR'];
                     document.querySelectorAll('.carousel-indicator').forEach(ind => ind.classList.remove('active'));
                     indicator.classList.add('active');
                 });
@@ -277,10 +277,10 @@
         }
 
         document.getElementById('languageButton').addEventListener('click', () => {
-            currentLanguage = currentLanguage === 'english' ? 'french' : 'english';
-            document.getElementById('languageButton').textContent = currentLanguage === 'english' ? 'Français' : 'English';
-            document.getElementById('edit-button').textContent = currentLanguage === 'english' ? 'Add / Edit models' : 'Ajouter / Modifier des modèles';
-            document.getElementById('banner-title').textContent = currentLanguage === 'english' ? 'Devices colors' : 'Couleurs appareils';
+            currentLanguage = currentLanguage === 'french' ? 'english' : 'french';
+            document.getElementById('languageButton').textContent = currentLanguage === 'french' ? 'English' : 'Français';
+            document.getElementById('edit-button').textContent = currentLanguage === 'french' ? 'Ajouter / Modifier des modèles' : 'Add / Edit models';
+            document.getElementById('banner-title').textContent = currentLanguage === 'french' ? 'Couleurs appareils' : 'Devices colors';
             filterByManufacturer(currentManufacturer);
         });
 
